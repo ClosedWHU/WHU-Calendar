@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.12.0
     version: 3.12.0
   nanoid:
-    specifier: ^5.1.11
-    version: 5.1.11
+    specifier: ^5.1.14
+    version: 5.1.14
   tsx:
     specifier: ^4.22.4
     version: 4.22.4
@@ -310,19 +310,19 @@ packages:
   /ics@3.12.0:
     resolution: {integrity: sha512-BBPiZ/TbUyZrxui7SHKGOa/n2HUxaW9ucn7cw47NW9OSKe5tItYxIdN7Uczti5nKURmfwVvYi2aLigCJGH1+cA==}
     dependencies:
-      nanoid: 3.3.12
+      nanoid: 3.3.13
       runes2: 1.1.4
       yup: 1.7.1
     dev: false
 
-  /nanoid@3.3.12:
-    resolution: {integrity: sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ==}
+  /nanoid@3.3.13:
+    resolution: {integrity: sha512-sPdqC6ByMVVGvF1ynvvMo0/o+oD1VX7DaHhijt1bFgjvBkHBib4t49GoNDhf2NDta4oeUNlaGbSt5K7qjZ955Q==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: false
 
-  /nanoid@5.1.11:
-    resolution: {integrity: sha512-v+KEsUv2ps74PaSKv0gHTxTCgMXOIfBEbaqa6w6ISIGC7ZsvHN4N9oJ8d4cmf0n5oTzQz2SLmThbQWhjd/8eKg==}
+  /nanoid@5.1.14:
+    resolution: {integrity: sha512-5c8l8kVzqpnDPaicbEop/fV0Q1w16FmbWtVhMqugTozAwYdlIQojWH5a/M7UfziFmGdQRrUdV+EPzc9Xng3VAQ==}
     engines: {node: ^18 || >=20}
     hasBin: true
     dev: false
