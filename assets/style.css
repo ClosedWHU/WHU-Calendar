@@ -791,3 +791,35 @@ body {
   font-variant-numeric: tabular-nums;
   font-weight: 500;
 }
+
+.calendar-iframe {
+  border: 0;
+  overflow: hidden;
+}
+
+.ios-gallery-window {
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  margin-top: 12px;
+  background: transparent;
+}
+
+.ios-gallery-track {
+  display: flex;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.ios-gallery-item {
+  flex: 0 0 100%;
+  display: block;
+}
+
+.ios-gallery-shot {
+  width: 100%;
+  display: block;
+  border: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}

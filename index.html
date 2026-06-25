@@ -4,21 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>武汉大学 iCalendar 校历</title>
-    <link rel="preconnect" href="https://fonts.googleapis.cn" />
-    <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-    <link
-      href="https://fonts.googleapis.cn/css2?family=Roboto:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <script src="./assets/main.js"></script>
-    <link rel="stylesheet" href="./assets/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css"
+      integrity="sha384-i+zcdVjfDil8rcPH7vxTArL4ivV2KSAIgqFsp4hC60z6cDw2XvoEPC34jpib7YxA"
+      crossorigin="anonymous"
     />
   </head>
   <body>
@@ -132,7 +122,7 @@
             title="Google Calendar Preview"
             width="800"
             height="600"
-            style="border: 0; overflow: hidden;"
+            class="calendar-iframe"
           ></iframe>
           <div class="calendar-fallback">
             <i class="fas fa-globe-asia fallback-icon"></i>
@@ -186,27 +176,10 @@
               </ol>
 
               <div id="ios-inline-gallery">
-                <div
-                  id="ios-gallery-window"
-                  style="
-                    overflow: hidden;
-                    border-radius: 8px;
-                    border: 1px solid var(--line);
-                    margin-top: 12px;
-                    background: transparent;
-                  "
-                >
-                  <div
-                    id="ios-gallery-track"
-                    style="
-                      display: flex;
-                      align-items: center;
-                      transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
-                    "
-                  >
+                <div id="ios-gallery-window" class="ios-gallery-window">
+                  <div id="ios-gallery-track" class="ios-gallery-track">
                     <a
-                      class="gallery-item"
-                      style="flex: 0 0 100%; display: block"
+                      class="gallery-item ios-gallery-item"
                       href="./assets/ios-online-1.png"
                     >
                       <img
@@ -223,8 +196,7 @@
                       />
                     </a>
                     <a
-                      class="gallery-item"
-                      style="flex: 0 0 100%; display: block"
+                      class="gallery-item ios-gallery-item"
                       href="./assets/ios-online-2.png"
                     >
                       <img
@@ -241,8 +213,7 @@
                       />
                     </a>
                     <a
-                      class="gallery-item"
-                      style="flex: 0 0 100%; display: block"
+                      class="gallery-item ios-gallery-item"
                       href="./assets/ios-online-3.png"
                     >
                       <img
@@ -259,8 +230,7 @@
                       />
                     </a>
                     <a
-                      class="gallery-item"
-                      style="flex: 0 0 100%; display: block"
+                      class="gallery-item ios-gallery-item"
                       href="./assets/ios-online-4.png"
                     >
                       <img
@@ -277,8 +247,7 @@
                       />
                     </a>
                     <a
-                      class="gallery-item"
-                      style="flex: 0 0 100%; display: block"
+                      class="gallery-item ios-gallery-item"
                       href="./assets/ios-online-5.png"
                     >
                       <img
@@ -295,8 +264,7 @@
                       />
                     </a>
                     <a
-                      class="gallery-item"
-                      style="flex: 0 0 100%; display: block"
+                      class="gallery-item ios-gallery-item"
                       href="./assets/ios-online-6.png"
                     >
                       <img
@@ -439,6 +407,10 @@
       </div>
       <p class="credits">图片来源：Wikimedia Commons（CC BY-SA）</p>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"
+      integrity="sha384-MjUNxSaHL/6eoaiJXs3NcsYt5PMcFos3RjoGKaBj8wqEu0lYAn0HISvhdiF8fjec"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
