@@ -55,7 +55,7 @@ export async function onRequest(context: any) {
   }
 
   const allEvents: EventAttributes[] = [];
-  const allData = dataBundle as Record<string, CalendarData>;
+  const allData = dataBundle as unknown as Record<string, CalendarData>;
 
   // Loop through all available keys in dataBundle and filter by range
   for (const yearKey of Object.keys(allData).sort()) {
