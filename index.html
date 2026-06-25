@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.cn" />
     <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
     <link
-      href="https://fonts.googleapis.cn/css2?family=Outfit:wght@300;400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap"
+      href="https://fonts.googleapis.cn/css2?family=Roboto:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -41,7 +41,7 @@
           <span class="hero-line">武汉大学</span>
           <span class="hero-line">iCalendar 校历</span>
         </h1>
-        <p class="hero-note">下载与订阅武汉大学校历文件。</p>
+        <p class="hero-note">下载或订阅武汉大学ICS校历</p>
         <div class="hero-actions">
           <a href="#download" class="btn btn-primary"
             ><i class="fas fa-arrow-down"></i> 获取校历</a
@@ -112,69 +112,6 @@
           </div>
           <div id="legacy-years" class="download-grid loading">
             <div class="download-card">正在加载历史版本...</div>
-          </div>
-        </div>
-
-        <div class="service-accordion delay-190" data-reveal>
-          <div class="service-item">
-            <button
-              class="service-trigger"
-              type="button"
-              aria-expanded="true"
-              aria-controls="step-1"
-            >
-              <span class="service-meta"
-                ><span class="service-index">01</span
-                ><span>完整导入</span></span
-              >
-              <i
-                class="fas fa-chevron-down service-arrow"
-                aria-hidden="true"
-              ></i>
-            </button>
-            <div id="step-1" class="service-content">
-              下载 all.ics 并导入日历应用。
-            </div>
-          </div>
-          <div class="service-item">
-            <button
-              class="service-trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="step-2"
-            >
-              <span class="service-meta"
-                ><span class="service-index">02</span
-                ><span>按学年导入</span></span
-              >
-              <i
-                class="fas fa-chevron-down service-arrow"
-                aria-hidden="true"
-              ></i>
-            </button>
-            <div id="step-2" class="service-content" hidden>
-              仅下载当前学年，导入更轻量。
-            </div>
-          </div>
-          <div class="service-item">
-            <button
-              class="service-trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="step-3"
-            >
-              <span class="service-meta"
-                ><span class="service-index">03</span
-                ><span>订阅更新</span></span
-              >
-              <i
-                class="fas fa-chevron-down service-arrow"
-                aria-hidden="true"
-              ></i>
-            </button>
-            <div id="step-3" class="service-content" hidden>
-              按设备教程配置订阅，后续自动同步。
-            </div>
           </div>
         </div>
       </section>
@@ -248,13 +185,159 @@
                 <li>添加账户 -> 其他</li>
                 <li>添加已订阅的日历</li>
               </ol>
-              <a class="gallery-item" href="./assets/ios-online-6.png"
-                ><img
-                  class="tutorial-shot"
-                  src="./assets/ios-online-6.png"
-                  alt="iOS 导入示意图"
-                  loading="lazy"
-              /></a>
+
+              <div id="ios-inline-gallery">
+                <div
+                  id="ios-gallery-window"
+                  style="
+                    overflow: hidden;
+                    border-radius: 8px;
+                    border: 1px solid var(--line);
+                    margin-top: 12px;
+                    background: transparent;
+                  "
+                >
+                  <div
+                    id="ios-gallery-track"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+                    "
+                  >
+                    <a
+                      class="gallery-item"
+                      style="flex: 0 0 100%; display: block"
+                      href="./assets/ios-online-1.png"
+                    >
+                      <img
+                        style="
+                          width: 100%;
+                          display: block;
+                          border: none;
+                          margin: 0;
+                          border-radius: 0;
+                        "
+                        src="./assets/ios-online-1.png"
+                        alt="iOS 导入示意图 1"
+                        loading="lazy"
+                      />
+                    </a>
+                    <a
+                      class="gallery-item"
+                      style="flex: 0 0 100%; display: block"
+                      href="./assets/ios-online-2.png"
+                    >
+                      <img
+                        style="
+                          width: 100%;
+                          display: block;
+                          border: none;
+                          margin: 0;
+                          border-radius: 0;
+                        "
+                        src="./assets/ios-online-2.png"
+                        alt="iOS 导入示意图 2"
+                        loading="lazy"
+                      />
+                    </a>
+                    <a
+                      class="gallery-item"
+                      style="flex: 0 0 100%; display: block"
+                      href="./assets/ios-online-3.png"
+                    >
+                      <img
+                        style="
+                          width: 100%;
+                          display: block;
+                          border: none;
+                          margin: 0;
+                          border-radius: 0;
+                        "
+                        src="./assets/ios-online-3.png"
+                        alt="iOS 导入示意图 3"
+                        loading="lazy"
+                      />
+                    </a>
+                    <a
+                      class="gallery-item"
+                      style="flex: 0 0 100%; display: block"
+                      href="./assets/ios-online-4.png"
+                    >
+                      <img
+                        style="
+                          width: 100%;
+                          display: block;
+                          border: none;
+                          margin: 0;
+                          border-radius: 0;
+                        "
+                        src="./assets/ios-online-4.png"
+                        alt="iOS 导入示意图 4"
+                        loading="lazy"
+                      />
+                    </a>
+                    <a
+                      class="gallery-item"
+                      style="flex: 0 0 100%; display: block"
+                      href="./assets/ios-online-5.png"
+                    >
+                      <img
+                        style="
+                          width: 100%;
+                          display: block;
+                          border: none;
+                          margin: 0;
+                          border-radius: 0;
+                        "
+                        src="./assets/ios-online-5.png"
+                        alt="iOS 导入示意图 5"
+                        loading="lazy"
+                      />
+                    </a>
+                    <a
+                      class="gallery-item"
+                      style="flex: 0 0 100%; display: block"
+                      href="./assets/ios-online-6.png"
+                    >
+                      <img
+                        style="
+                          width: 100%;
+                          display: block;
+                          border: none;
+                          margin: 0;
+                          border-radius: 0;
+                        "
+                        src="./assets/ios-online-6.png"
+                        alt="iOS 导入示意图 6"
+                        loading="lazy"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div class="ios-gallery-controls">
+                  <button
+                    type="button"
+                    class="btn-icon"
+                    id="ios-prev-btn"
+                    aria-label="上一张"
+                    onclick="navigateIos(-1)"
+                    disabled
+                  >
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <span id="ios-gallery-counter">1 / 6</span>
+                  <button
+                    type="button"
+                    class="btn-icon"
+                    id="ios-next-btn"
+                    aria-label="下一张"
+                    onclick="navigateIos(1)"
+                  >
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
               <a
                 class="tutorial-link"
                 href="https://support.apple.com/zh-cn/guide/iphone/ipha0d932e96/ios"
@@ -309,19 +392,21 @@
             </div>
             <div class="tutorial-body">
               <ol>
-                <li>复制以下订阅地址：</li>
-                <li class="code-block-container">
-                  <div class="code-block" id="gcal-link">
-                    https://calendar.google.com/calendar/ical/dmaflq147netffr6sa06k06bim87ft08%40import.calendar.google.com/public/basic.ics
+                <li>
+                  复制以下订阅地址：
+                  <div class="code-block-container">
+                    <div class="code-block" id="gcal-link">
+                      https://calendar.google.com/calendar/ical/dmaflq147netffr6sa06k06bim87ft08%40import.calendar.google.com/public/basic.ics
+                    </div>
+                    <button
+                      class="btn-icon"
+                      aria-label="Copy to clipboard"
+                      onclick="copyToClipboard('gcal-link', this)"
+                      title="复制链接"
+                    >
+                      <i class="far fa-copy"></i>
+                    </button>
                   </div>
-                  <button
-                    class="btn-icon"
-                    aria-label="Copy to clipboard"
-                    onclick="copyToClipboard('gcal-link', this)"
-                    title="复制链接"
-                  >
-                    <i class="far fa-copy"></i>
-                  </button>
                 </li>
                 <li>
                   打开
@@ -353,9 +438,7 @@
           ><i class="fab fa-github"></i> GitHub</a
         >
       </div>
-      <p class="credits">
-        图片来源：Wikimedia Commons（CC BY-SA）
-      </p>
+      <p class="credits">图片来源：Wikimedia Commons（CC BY-SA）</p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
   </body>

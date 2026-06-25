@@ -107,22 +107,6 @@ function setupReveal() {
   blocks.forEach((el) => observer.observe(el));
 }
 
-function setupAccordion() {
-  const triggers = document.querySelectorAll(".service-trigger");
-  triggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      const expanded = trigger.getAttribute("aria-expanded") === "true";
-      const targetId = trigger.getAttribute("aria-controls");
-      const panel = document.getElementById(targetId);
-      if (!panel) {
-        return;
-      }
-      trigger.setAttribute("aria-expanded", String(!expanded));
-      panel.hidden = expanded;
-    });
-  });
-}
-
 function setupParallax() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     return;
@@ -374,21 +358,34 @@ async function initializePage() {
 // 页面加载完成后初始化
 document.addEventListener("DOMContentLoaded", async () => {
   setupReveal();
-  setupAccordion();
   setupParallax();
   setupSakura();
   checkGoogleConnectivity();
-  
+
   const guideSection = document.getElementById("guide");
   if (guideSection && typeof lightGallery !== "undefined") {
     lightGallery(guideSection, {
       selector: ".gallery-item",
       download: false,
-      counter: false
+      counter: false,
     });
   }
-  
+
   await initializePage();
+
+  // Restore scroll position
+  const savedPos = sessionStorage.getItem("scrollPos");
+  if (savedPos) {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, parseInt(savedPos, 10));
+    requestAnimationFrame(() => {
+      document.documentElement.style.scrollBehavior = "";
+    });
+  }
+
+  window.addEventListener("beforeunload", () => {
+    sessionStorage.setItem("scrollPos", window.scrollY);
+  });
 });
 
 window.copyToClipboard = function (id, btn) {
@@ -403,3 +400,25 @@ window.copyToClipboard = function (id, btn) {
     }
   });
 };
+
+let currentIosIndex = 0;
+function navigateIos(dir) {
+  const track = document.getElementById("ios-gallery-track");
+  if (!track) return;
+  const items = track.querySelectorAll(".gallery-item");
+  if (!items.length) return;
+
+  currentIosIndex += dir;
+  if (currentIosIndex < 0) currentIosIndex = 0;
+  if (currentIosIndex >= items.length) currentIosIndex = items.length - 1;
+
+  track.style.transform = "translateX(-" + currentIosIndex * 100 + "%)";
+  document.getElementById("ios-gallery-counter").textContent =
+    currentIosIndex + 1 + " / " + items.length;
+
+  const prevBtn = document.getElementById("ios-prev-btn");
+  const nextBtn = document.getElementById("ios-next-btn");
+  if (prevBtn) prevBtn.disabled = currentIosIndex === 0;
+  if (nextBtn) nextBtn.disabled = currentIosIndex === items.length - 1;
+}
+window.navigateIos = navigateIos;

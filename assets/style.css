@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -79,7 +80,8 @@ html {
 }
 
 body {
-  font-family: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family:
+    "Roboto", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   background: var(--paper);
   color: var(--ink);
   line-height: 1.6;
@@ -241,8 +243,7 @@ body {
   }
 }
 
-.download-panel,
-.service-accordion {
+.download-panel {
   background: var(--md-sys-color-surface-container-low);
   border-radius: 16px;
   overflow: hidden;
@@ -346,68 +347,6 @@ body {
 .download-description {
   font-size: 0.9rem;
   opacity: 0.88;
-}
-
-.service-accordion {
-  margin-top: 16px;
-}
-
-.service-item + .service-item {
-  border-top: 1px solid var(--md-sys-color-outline-variant);
-}
-
-.service-trigger {
-  width: 100%;
-  border: 0;
-  background: transparent;
-  color: var(--md-sys-color-on-surface);
-  cursor: pointer;
-  text-align: left;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background-color 300ms var(--ease-out-expo);
-  font: inherit;
-  transition: background-color 200ms var(--ease-out-quart);
-}
-
-.service-trigger:hover,
-.service-trigger:focus-visible {
-  background: var(--md-sys-color-surface-container-highest);
-  outline: none;
-}
-
-.service-meta {
-  display: flex;
-  gap: 13px;
-  align-items: center;
-}
-
-.service-index {
-  color: var(--md-sys-color-on-primary-container);
-  background: var(--md-sys-color-primary-container);
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  font-size: 0.9rem;
-}
-
-.service-arrow {
-  transition: transform 300ms var(--ease-out-expo);
-}
-
-.service-trigger[aria-expanded="true"] .service-arrow {
-  transform: rotate(-180deg);
-}
-
-.service-content {
-  color: var(--ink-muted);
-  padding: 0 16px 14px;
 }
 
 .tutorial-grid {
@@ -528,6 +467,9 @@ body {
   .hero {
     min-height: 88vh;
     padding: 16px;
+    background:
+      linear-gradient(146deg, rgba(8, 45, 110, 0.9), rgba(12, 63, 148, 0.86)),
+      url("./whu-cherry-castle.jpg") center / cover no-repeat;
   }
 
   .hero-top {
@@ -574,10 +516,6 @@ body {
   .download-card {
     padding: 14px;
     border-right: 0;
-  }
-
-  .service-trigger {
-    min-height: 52px;
   }
 
   .tutorial-head,
@@ -823,8 +761,13 @@ body {
   justify-content: center;
 }
 
-.btn-icon:hover {
+.btn-icon:hover:not(:disabled) {
   background: var(--md-sys-color-surface-variant);
+}
+
+.btn-icon:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .google-cal-download {
@@ -833,4 +776,18 @@ body {
 
 .is-online .google-cal-download {
   display: flex;
+}
+
+.ios-gallery-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+#ios-gallery-counter {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
 }
