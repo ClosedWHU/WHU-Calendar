@@ -1,6 +1,5 @@
 node_modules/
 dist/
 
-*.js
 *.ics
 .DS_Store

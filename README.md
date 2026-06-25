@@ -14,9 +14,7 @@
 
 本项目提供武汉大学官方校历的 iCalendar 格式数据，目前包含从 2021 年到 2026 年（持续更新中）的完整校历信息。
 
-本项目已完成从「硬编码脚本」向「数据驱动架构」的现代化迁移：
-- **数据源统一**：所有校历数据均存储在 `data/*.json` 中。
-- **自动化校验**：引入对齐审计和溯源审计脚本，确保数据 100% 准确。
+本项目使用数据驱动架构，所有校历数据均存储在 `data/*.json` 中。
 
 > **注意**：本项目仅提供校历数据，不保证数据的绝对实时性。请以武汉大学官方发布的[最新校历](https://uc.whu.edu.cn/xl.htm)为准。
 
@@ -73,22 +71,18 @@ whu-calendar/
 └── README.md
 ```
 
-## 使用方法
-
-见 [document.md](https://github.com/WHU-sb/WHU-sb-Calendar/blob/main/document.md)
-
 ## 数据说明
 
 自 2026 年起，本项目弃用了 `calendar_YYYY.ts` 脚本方式，转而采用 JSON 数据驱动。
 
 ### 格式对比 (Legacy vs Modern)
 
-| 特性 | Legacy (TS) | Modern (JSON) |
-| :--- | :--- | :--- |
+| 特性         | Legacy (TS)                | Modern (JSON)              |
+| :----------- | :------------------------- | :------------------------- |
 | **存储方式** | 硬编码脚本 (`legacy/*.ts`) | 结构化数据 (`data/*.json`) |
-| **月份索引** | 0-indexed (0=Jan) | **1-indexed (1=Jan)** |
-| **周起始日** | 视脚本而定 | **强制 Sunday (周日)** |
-| **校验机制** | 无 | 自动化脚本审计 |
+| **月份索引** | 0-indexed (0=Jan)          | **1-indexed (1=Jan)**      |
+| **周起始日** | 视脚本而定                 | **强制 Sunday (周日)**     |
+| **校验机制** | 无                         | 自动化脚本审计             |
 
 ## 开发指南
 
@@ -96,8 +90,8 @@ whu-calendar/
 
 1. 在 `data/` 目录下创建新的 `YYYY-YYYY.json` 文件（参考现有模板）。
 2. **日期规范**：
-    - 月份使用真实数字（如 9 代表 9 月）。
-    - 每个学期的 `start` 日期必须固定为**该周的星期天**。
+   - 月份使用真实数字（如 9 代表 9 月）。
+   - 每个学期的 `start` 日期必须固定为**该周的星期天**。
 3. 运行 `pnpm run build` 重新生成资源。
 4. 运行 `npx tsx src/check-alignment.ts` 进行审计。
 
@@ -111,6 +105,7 @@ whu-calendar/
 - 感谢所有贡献者的支持和建议。
 
 <!--GAMFC--><a href="https://github.com/HsukqiLee" title="Hsukqi Lee"><img src="https://avatars.githubusercontent.com/u/79034142?v=4" width="42;" alt="Hsukqi Lee"/></a>
+
 <a href="https://github.com/ExerciseBook" title="Eric_Lian"><img src="https://avatars.githubusercontent.com/u/6327311?v=4" width="42;" alt="Eric_Lian"/></a>
 <a href="https://github.com/little-weakduck" title="Little Weakduck"><img src="https://avatars.githubusercontent.com/u/83490374?v=4" width="42;" alt="Little Weakduck"/></a>
 <a href="https://github.com/LeixinSun" title="Leixin Sun"><img src="https://avatars.githubusercontent.com/u/233723091?v=4" width="42;" alt="Leixin Sun"/></a>
