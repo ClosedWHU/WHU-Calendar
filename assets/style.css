@@ -823,3 +823,48 @@ body {
   margin: 0 !important;
   border-radius: 0 !important;
 }
+.custom-range-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.custom-range-selectors {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+.select-wrapper {
+  position: relative;
+  flex: 1;
+}
+.select-wrapper select {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--text-primary);
+  appearance: none;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+.select-wrapper select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-color-alpha);
+}
+.select-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+.range-separator {
+  color: var(--text-secondary);
+  font-weight: 500;
+}

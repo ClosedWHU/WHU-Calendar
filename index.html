@@ -109,11 +109,32 @@
 
         <div class="download-panel delay-160" data-reveal>
           <div class="download-head">
-            <span><i class="fas fa-clock-rotate-left"></i> 历史版本合集</span>
-            <span>Legacy</span>
+            <span><i class="fas fa-sliders"></i> 自定义跨年合集</span>
+            <span>Custom Range</span>
           </div>
-          <div id="legacy-years" class="download-grid loading">
-            <div class="download-card">正在加载历史版本...</div>
+          <div class="custom-range-container">
+            <div class="custom-range-selectors">
+              <div class="select-wrapper">
+                <select id="start-year-select" aria-label="起始学年"></select>
+                <i class="fas fa-chevron-down select-icon"></i>
+              </div>
+              <span class="range-separator">至</span>
+              <div class="select-wrapper">
+                <select id="end-year-select" aria-label="结束学年"></select>
+                <i class="fas fa-chevron-down select-icon"></i>
+              </div>
+            </div>
+            <a
+              id="custom-download-btn"
+              href="#"
+              class="download-card secondary"
+            >
+              <div>
+                <div class="download-title">下载跨年合集</div>
+                <div class="download-description" id="custom-download-desc">包含选择年份的数据</div>
+              </div>
+              <i class="fas fa-arrow-down"></i>
+            </a>
           </div>
         </div>
       </section>

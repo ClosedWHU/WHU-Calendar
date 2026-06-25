@@ -50,39 +50,72 @@ function generateIndividualYearLinks(years) {
   });
 }
 
-// 生成历史版本累计合集链接
-function generateLegacyYearLinks(years) {
-  const container = document.getElementById("legacy-years");
-  container.innerHTML = "";
+// 生成自定义跨年合集选择器
+function setupCustomRangeSelectors(years) {
+  if (years.length === 0) return;
 
-  if (years.length < 2) {
-    container.innerHTML = '<div class="download-card">暂无历史合集</div>';
-    return;
-  }
+  const startSelect = document.getElementById("start-year-select");
+  const endSelect = document.getElementById("end-year-select");
+  const downloadBtn = document.getElementById("custom-download-btn");
+  const downloadDesc = document.getElementById("custom-download-desc");
 
-  const startYear = years[0].split("-")[0];
+  if (!startSelect || !endSelect || !downloadBtn || !downloadDesc) return;
 
-  // 从第二个学年开始生成从第一年起的合集
-  for (let i = 1; i < years.length; i++) {
-    const endYear = years[i].split("-")[1];
-    const rangeName = `${startYear}-${endYear}`;
+  // 提取单纯的起始年份（例如 "2012-2013" 提取出 "2012"）
+  const startYears = years.map(y => y.split("-")[0]);
+  // 提取单纯的结束年份（例如 "2012-2013" 提取出 "2013"）
+  const endYears = years.map(y => y.split("-")[1]);
 
-    const link = document.createElement("a");
-    // 如果是最后一个，可以指向 all.ics 或者 rangeName.ics (两者等价)
-    const fileName = i === years.length - 1 ? "all.ics" : `${rangeName}.ics`;
+  // 去重并排序
+  const uniqueStartYears = [...new Set(startYears)].sort();
+  const uniqueEndYears = [...new Set(endYears)].sort();
 
-    link.href = `./${fileName}`;
-    link.download = `whu-calendar-${rangeName}.ics`;
-    link.className = "download-card";
-    link.innerHTML = `
-            <div>
-              <div class="download-title">${rangeName} 合集</div>
-              <div class="download-description">包含 ${startYear} 至 ${endYear} 数据</div>
-            </div>
-            <i class="fas fa-arrow-down"></i>
-          `;
-    container.appendChild(link);
-  }
+  // 填充下拉框
+  uniqueStartYears.forEach(year => {
+    const option = document.createElement("option");
+    option.value = year;
+    option.textContent = year + " 年";
+    startSelect.appendChild(option);
+  });
+
+  uniqueEndYears.forEach(year => {
+    const option = document.createElement("option");
+    option.value = year;
+    option.textContent = year + " 年";
+    endSelect.appendChild(option);
+  });
+
+  // 默认选中第一项和最后一项
+  if (startSelect.options.length > 0) startSelect.selectedIndex = 0;
+  if (endSelect.options.length > 0) endSelect.selectedIndex = endSelect.options.length - 1;
+
+  // 更新下载链接的函数
+  const updateDownloadLink = () => {
+    const sYear = parseInt(startSelect.value, 10);
+    const eYear = parseInt(endSelect.value, 10);
+
+    if (sYear >= eYear) {
+      downloadBtn.classList.add("disabled");
+      downloadBtn.style.pointerEvents = "none";
+      downloadBtn.style.opacity = "0.5";
+      downloadDesc.textContent = "起始年份必须小于结束年份";
+      downloadBtn.href = "#";
+      return;
+    }
+
+    downloadBtn.classList.remove("disabled");
+    downloadBtn.style.pointerEvents = "auto";
+    downloadBtn.style.opacity = "1";
+    downloadDesc.textContent = `包含 ${sYear} 至 ${eYear} 数据`;
+    downloadBtn.href = `./api/${sYear}-${eYear}.ics`;
+    downloadBtn.download = `whu-calendar-${sYear}-${eYear}.ics`;
+  };
+
+  startSelect.addEventListener("change", updateDownloadLink);
+  endSelect.addEventListener("change", updateDownloadLink);
+
+  // 初始化链接
+  updateDownloadLink();
 }
 
 function setupReveal() {
@@ -327,7 +360,7 @@ async function initializePage() {
 
     if (years.length > 0) {
       generateIndividualYearLinks(years);
-      generateLegacyYearLinks(years);
+      setupCustomRangeSelectors(years);
     } else {
       // 如果没有找到年份，显示默认硬编码年份
       const defaultYears = [
@@ -338,7 +371,7 @@ async function initializePage() {
         "2025-2026",
       ];
       generateIndividualYearLinks(defaultYears);
-      generateLegacyYearLinks(defaultYears);
+      setupCustomRangeSelectors(defaultYears);
     }
   } catch (error) {
     console.error("初始化页面时出错:", error);
@@ -351,7 +384,7 @@ async function initializePage() {
       "2025-2026",
     ];
     generateIndividualYearLinks(defaultYears);
-    generateLegacyYearLinks(defaultYears);
+    setupCustomRangeSelectors(defaultYears);
   }
 }
 

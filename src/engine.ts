@@ -10,9 +10,13 @@ const __dirname = dirname(__filename)
 const projectRoot = join(__dirname, '..')
 const dataDir = join(projectRoot, 'data')
 const distDir = join(projectRoot, 'dist')
+const funcDir = join(projectRoot, 'functions')
 
 if (!existsSync(distDir)) {
   mkdirSync(distDir, { recursive: true })
+}
+if (!existsSync(funcDir)) {
+  mkdirSync(funcDir, { recursive: true })
 }
 
 interface CalendarData {
@@ -49,11 +53,17 @@ async function generate() {
   const dataFiles = readdirSync(dataDir).filter(f => f.endsWith('.json'))
   const allEvents: EventAttributes[] = []
   const years: string[] = []
+  
+  // To store everything for the CF Worker
+  const allDataBundle: Record<string, CalendarData> = {}
 
   for (const file of dataFiles) {
     const data: CalendarData = JSON.parse(readFileSync(join(dataDir, file), 'utf-8'))
     const uidGenerator = uidGenerateFactory(data.uidPrefix)
     const calendarEvents: EventAttributes[] = []
+    
+    // store in bundle
+    allDataBundle[data.name] = data
 
     // 1. Process static events
     for (const e of data.events) {
@@ -84,7 +94,7 @@ async function generate() {
       }
     }
 
-    // Generate individual ics
+    // Generate individual ics (static generation is preserved)
     createEvents(calendarEvents, (error: Error | undefined, value: string | undefined) => {
       if (!error && value) {
         writeFileSync(join(distDir, `${data.name}.ics`), value)
@@ -94,20 +104,6 @@ async function generate() {
 
     allEvents.push(...calendarEvents)
     years.push(data.name)
-
-    // Generate cumulative ics (starting from 2nd year)
-    if (years.length > 1) {
-      const startYear = years[0].split('-')[0]
-      const endYear = data.name.split('-')[1]
-      const rangeName = `${startYear}-${endYear}`
-      
-      createEvents(allEvents, (error: Error | undefined, value: string | undefined) => {
-        if (!error && value) {
-          writeFileSync(join(distDir, `${rangeName}.ics`), value)
-          console.log(`✅ Generated cumulative ${rangeName}.ics`)
-        }
-      })
-    }
   }
 
   // Generate all.ics
@@ -118,12 +114,20 @@ async function generate() {
     }
   })
 
-  // Generate years.json
+  // Generate years.json for frontend
   writeFileSync(
     join(distDir, 'years.json'),
     JSON.stringify({ years: years.sort(), lastUpdated: new Date().toISOString() }, null, 2)
   )
   console.log(`✅ Generated years.json`)
+
+  // Output the data bundle for CF Worker API
+  writeFileSync(
+    join(funcDir, 'data.json'),
+    JSON.stringify(allDataBundle)
+  )
+  console.log(`✅ Generated functions/data.json`)
 }
 
 generate().catch(console.error)
+
