@@ -209,69 +209,69 @@
               </ol>
 
               <div id="ios-inline-gallery">
-                <div id="ios-gallery-window" class="ios-gallery-window">
+                <div class="gallery-window">
                   <div id="ios-gallery-track" class="ios-gallery-track">
                     <a
-                      class="gallery-item ios-gallery-item"
+                      class="gallery-item"
                       href="./assets/ios-online-1.png"
                     >
                       <img
-                        class="ios-gallery-shot"
+                        class="gallery-shot"
                         src="./assets/ios-online-1.png"
                         alt="iOS 导入示意图 1"
                         loading="lazy"
                       />
                     </a>
                     <a
-                      class="gallery-item ios-gallery-item"
+                      class="gallery-item"
                       href="./assets/ios-online-2.png"
                     >
                       <img
-                        class="ios-gallery-shot"
+                        class="gallery-shot"
                         src="./assets/ios-online-2.png"
                         alt="iOS 导入示意图 2"
                         loading="lazy"
                       />
                     </a>
                     <a
-                      class="gallery-item ios-gallery-item"
+                      class="gallery-item"
                       href="./assets/ios-online-3.png"
                     >
                       <img
-                        class="ios-gallery-shot"
+                        class="gallery-shot"
                         src="./assets/ios-online-3.png"
                         alt="iOS 导入示意图 3"
                         loading="lazy"
                       />
                     </a>
                     <a
-                      class="gallery-item ios-gallery-item"
+                      class="gallery-item"
                       href="./assets/ios-online-4.png"
                     >
                       <img
-                        class="ios-gallery-shot"
+                        class="gallery-shot"
                         src="./assets/ios-online-4.png"
                         alt="iOS 导入示意图 4"
                         loading="lazy"
                       />
                     </a>
                     <a
-                      class="gallery-item ios-gallery-item"
+                      class="gallery-item"
                       href="./assets/ios-online-5.png"
                     >
                       <img
-                        class="ios-gallery-shot"
+                        class="gallery-shot"
                         src="./assets/ios-online-5.png"
                         alt="iOS 导入示意图 5"
                         loading="lazy"
                       />
                     </a>
                     <a
-                      class="gallery-item ios-gallery-item"
+                      class="gallery-item"
                       href="./assets/ios-online-6.png"
                     >
                       <img
-                        class="ios-gallery-shot"
+                        class="gallery-shot"
                         src="./assets/ios-online-6.png"
                         alt="iOS 导入示意图 6"
                         loading="lazy"
@@ -316,10 +316,92 @@
             <div class="tutorial-head"><i class="fas fa-laptop"></i> macOS</div>
             <div class="tutorial-body">
               <ol>
-                <li>下载 .ics 文件</li>
-                <li>双击文件</li>
-                <li>系统日历中确认导入</li>
+                <li>打开“日历”App</li>
+                <li>点击菜单栏的 “文件” > “新建日历订阅”</li>
+                <li>输入订阅链接</li>
+                <li>完善日历信息</li>
               </ol>
+
+              <div id="macos-inline-gallery">
+                <div class="gallery-window">
+                  <div id="macos-gallery-track" class="macos-gallery-track">
+                    <a
+                      class="gallery-item"
+                      href="./assets/macos-sub-1.jpg"
+                    >
+                      <img
+                        class="gallery-shot"
+                        src="./assets/macos-sub-1.jpg"
+                        alt="macOS 导入示意图 1"
+                        loading="lazy"
+                      />
+                    </a>
+                    <a
+                      class="gallery-item"
+                      href="./assets/macos-sub-2.jpg"
+                    >
+                      <img
+                        class="gallery-shot"
+                        src="./assets/macos-sub-2.jpg"
+                        alt="macOS 导入示意图 2"
+                        loading="lazy"
+                      />
+                    </a>
+                    <a
+                      class="gallery-item"
+                      href="./assets/macos-sub-3.jpg"
+                    >
+                      <img
+                        class="gallery-shot"
+                        src="./assets/macos-sub-3.jpg"
+                        alt="macOS 导入示意图 3"
+                        loading="lazy"
+                      />
+                    </a>
+                    <a
+                      class="gallery-item"
+                      href="./assets/macos-sub-4.jpg"
+                    >
+                      <img
+                        class="gallery-shot"
+                        src="./assets/macos-sub-4.jpg"
+                        alt="macOS 导入示意图 4"
+                        loading="lazy"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div class="macos-gallery-controls">
+                  <button
+                    type="button"
+                    class="btn-icon"
+                    id="macos-prev-btn"
+                    aria-label="上一张"
+                    onclick="navigateMacos(-1)"
+                    disabled
+                  >
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <span id="macos-gallery-counter">1 / 4</span>
+                  <button
+                    type="button"
+                    class="btn-icon"
+                    id="macos-next-btn"
+                    aria-label="下一张"
+                    onclick="navigateMacos(1)"
+                  >
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <a
+                class="tutorial-link"
+                href="https://support.apple.com/zh-cn/guide/calendar/icl1022/mac"
+                target="_blank"
+                rel="noopener"
+                >Apple 官方教程</a
+              >
             </div>
           </article>
 

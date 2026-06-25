@@ -454,4 +454,27 @@ function navigateIos(dir) {
   if (prevBtn) prevBtn.disabled = currentIosIndex === 0;
   if (nextBtn) nextBtn.disabled = currentIosIndex === items.length - 1;
 }
+
+let currentMacosIndex = 0;
+function navigateMacos(dir) {
+  const track = document.getElementById("macos-gallery-track");
+  if (!track) return;
+  const items = track.querySelectorAll(".gallery-item");
+  if (!items.length) return;
+
+  currentMacosIndex += dir;
+  if (currentMacosIndex < 0) currentMacosIndex = 0;
+  if (currentMacosIndex >= items.length) currentMacosIndex = items.length - 1;
+
+  track.style.transform = "translateX(-" + currentMacosIndex * 100 + "%)";
+  document.getElementById("macos-gallery-counter").textContent =
+    currentMacosIndex + 1 + " / " + items.length;
+
+  const prevBtn = document.getElementById("macos-prev-btn");
+  const nextBtn = document.getElementById("macos-next-btn");
+  if (prevBtn) prevBtn.disabled = currentMacosIndex === 0;
+  if (nextBtn) nextBtn.disabled = currentMacosIndex === items.length - 1;
+}
+
 window.navigateIos = navigateIos;
+window.navigateMacos = navigateMacos;

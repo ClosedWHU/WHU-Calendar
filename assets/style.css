@@ -778,14 +778,16 @@ body {
   display: flex;
 }
 
-.ios-gallery-controls {
+.ios-gallery-controls,
+.macos-gallery-controls {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
   margin-top: 12px;
 }
-#ios-gallery-counter {
+#ios-gallery-counter,
+#macos-gallery-counter {
   font-size: 0.9rem;
   color: var(--ink-muted);
   font-variant-numeric: tabular-nums;
@@ -797,7 +799,7 @@ body {
   overflow: hidden;
 }
 
-.ios-gallery-window {
+.gallery-window {
   overflow: hidden;
   border-radius: 8px;
   border: 1px solid var(--line);
@@ -805,18 +807,19 @@ body {
   background: transparent;
 }
 
-.ios-gallery-track {
+.ios-gallery-track,
+.macos-gallery-track {
   display: flex;
   align-items: center;
   transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.ios-gallery-item {
+.gallery-item {
   flex: 0 0 100%;
   display: block;
 }
 
-.ios-gallery-shot {
+.gallery-shot {
   width: 100%;
   display: block;
   border: none !important;
