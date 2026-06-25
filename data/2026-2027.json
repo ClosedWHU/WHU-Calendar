@@ -1,0 +1,190 @@
+{
+  "name": "2026-2027",
+  "uidPrefix": "whu-calendar-2026",
+  "events": [
+    {
+      "id": "class-begin",
+      "title": "除本科新生外所有本科生和在籍研究生开始上课",
+      "start": [2026, 9, 7],
+      "end": [2026, 9, 8],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "undergraduate-freshman-registration",
+      "title": "本科新生报到注册",
+      "description": "请仔细对照录取通知书上的要求准备好材料。",
+      "start": [2026, 8, 31],
+      "end": [2026, 9, 1],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "undergraduate-freshman-before-class-begin",
+      "title": "本科生新生入学教育、军训",
+      "start": [2026, 9, 1],
+      "end": [2026, 9, 21],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "military-training",
+      "title": "新生军训",
+      "start": [2026, 9, 1],
+      "end": [2026, 9, 21],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "undergraduate-master-registration",
+      "title": "本科生老生、研究生老生返校注册",
+      "start": [2026, 9, 6],
+      "end": [2026, 9, 7],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "master-freshman-registration",
+      "title": "研究生新生报到注册",
+      "description": "请仔细对照录取通知书上的要求准备好材料。",
+      "start": [2026, 9, 1],
+      "end": [2026, 9, 2],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "master-freshman-before-class-begin",
+      "title": "研究生新生入学教育",
+      "start": [2026, 9, 2],
+      "end": [2026, 9, 7],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "undergraduate-freshman-class-begin",
+      "title": "本科生新生开始上课",
+      "start": [2026, 9, 21],
+      "end": [2026, 9, 22],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "mid-autumn-festival-holiday",
+      "title": "中秋节",
+      "description": "调休细节日后更新",
+      "start": [2026, 9, 25],
+      "end": [2026, 9, 26],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "national-day-holiday",
+      "title": "国庆节",
+      "description": "调休细节日后更新",
+      "start": [2026, 10, 1],
+      "end": [2026, 10, 2],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "school-sports-meeting",
+      "title": "校运会（11月5日下午-7日）",
+      "start": [2026, 11, 5],
+      "end": [2026, 11, 8],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "new-year-holiday",
+      "title": "元旦",
+      "description": "调休细节日后更新",
+      "start": [2027, 1, 1],
+      "end": [2027, 1, 2],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "spring-festival-holiday",
+      "title": "春节",
+      "start": [2027, 2, 6],
+      "end": [2027, 2, 7],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "term-1-final-week",
+      "title": "复习考试周",
+      "start": [2027, 1, 3],
+      "end": [2027, 1, 17],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "winter-vacation",
+      "title": "寒假",
+      "description": "教职工寒假执行学校通知。",
+      "start": [2027, 1, 17],
+      "end": [2027, 2, 21],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "registration-term-2",
+      "title": "第二学期返校注册",
+      "start": [2027, 2, 21],
+      "end": [2027, 2, 22],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "class-begin-term-2",
+      "title": "第二学期开始上课",
+      "start": [2027, 2, 22],
+      "end": [2027, 2, 23],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "ching-ming-festival-holiday",
+      "title": "清明节",
+      "description": "调休细节日后更新",
+      "start": [2027, 4, 5],
+      "end": [2027, 4, 6],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "may-day-holiday",
+      "title": "劳动节",
+      "description": "调休细节日后更新",
+      "start": [2027, 5, 1],
+      "end": [2027, 5, 2],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "dragon-boat-festival-holiday",
+      "title": "端午节",
+      "description": "调休细节日后更新",
+      "start": [2027, 6, 9],
+      "end": [2027, 6, 10],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "term-2-final-week",
+      "title": "第二学期复习考试周",
+      "start": [2027, 6, 13],
+      "end": [2027, 6, 27],
+      "busyStatus": "FREE"
+    },
+    {
+      "id": "summer-vacation",
+      "title": "暑假",
+      "description": "教职工暑假执行学校通知",
+      "start": [2027, 7, 11],
+      "end": [2027, 9, 5],
+      "busyStatus": "FREE"
+    }
+  ],
+  "semesters": [
+    {
+      "name": "2026-2027第一学期",
+      "prefix": "term-1",
+      "start": [2026, 9, 6],
+      "weeks": 19
+    },
+    {
+      "name": "2026-2027第二学期",
+      "prefix": "term-2",
+      "start": [2027, 2, 21],
+      "weeks": 18
+    },
+    {
+      "name": "2026-2027第三学期",
+      "prefix": "term-3",
+      "start": [2027, 6, 27],
+      "weeks": 2
+    }
+  ]
+}
