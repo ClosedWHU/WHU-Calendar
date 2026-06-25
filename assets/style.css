@@ -542,6 +542,10 @@ body {
 
   .hero-main {
     margin-top: 54px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .hero-title {
@@ -551,6 +555,7 @@ body {
 
   .hero-note {
     font-size: 0.95rem;
+    margin: 16px auto 0;
   }
 
   .section {
@@ -714,7 +719,7 @@ body {
   display: flex;
   gap: 16px;
   margin-top: 32px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .btn {
@@ -737,26 +742,29 @@ body {
 }
 
 .btn-primary {
-  background: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
+  background: #d8e2ff;
+  color: #001a41;
 }
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
+  background: #ecf0ff;
   outline: none;
 }
 
 .btn-tonal {
-  background: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-tonal:hover,
 .btn-tonal:focus-visible {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.25);
   outline: none;
 }
 

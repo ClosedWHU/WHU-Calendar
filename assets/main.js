@@ -378,6 +378,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupParallax();
   setupSakura();
   checkGoogleConnectivity();
+  
+  const guideSection = document.getElementById("guide");
+  if (guideSection && typeof lightGallery !== "undefined") {
+    lightGallery(guideSection, {
+      selector: ".gallery-item",
+      download: false,
+      counter: false
+    });
+  }
+  
   await initializePage();
 });
 
