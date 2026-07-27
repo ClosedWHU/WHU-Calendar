@@ -3,11 +3,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-ES%20Modules-green.svg)](https://nodejs.org/)
-[![Build Status](https://github.com/WHU-sb/WHU-sb-Calendar/workflows/Build%20and%20Deploy%20ICS%20Calendar/badge.svg)](https://github.com/WHU-sb/WHU-sb-Calendar/actions)
-[![Last commit](https://img.shields.io/github/last-commit/WHU-sb/WHU-sb-Calendar.svg)](https://github.com/WHU-sb/WHU-sb-Calendar/commits/main)
-[![Issues](https://img.shields.io/github/issues/WHU-sb/WHU-sb-Calendar.svg)](https://github.com/WHU-sb/WHU-sb-Calendar/issues)
-[![Stars](https://img.shields.io/github/stars/WHU-sb/WHU-sb-Calendar?style=flat)](https://github.com/WHU-sb/WHU-sb-Calendar/stargazers)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar?ref=badge_shield)
+[![Build Status](https://github.com/ClosedWHU/WHU-Calendar/workflows/Build%20and%20Deploy%20ICS%20Calendar/badge.svg)](https://github.com/ClosedWHU/WHU-Calendar/actions)
+[![Last commit](https://img.shields.io/github/last-commit/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/commits/main)
+[![Issues](https://img.shields.io/github/issues/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/issues)
+[![Stars](https://img.shields.io/github/stars/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/stargazers)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar?ref=badge_shield)
 
 武汉大学校历数据集合，支持导入各种日历应用，轻松管理学校日程。
 
@@ -38,8 +38,8 @@
 1. **克隆项目**
 
 ```bash
-git clone https://github.com/WHU-sb/WHU-sb-Calendar.git
-cd WHU-sb-Calendar
+git clone https://github.com/ClosedWHU/WHU-Calendar.git
+cd WHU-Calendar
 ```
 
 2. **安装依赖**
@@ -116,12 +116,11 @@ whu-calendar/
 ## 联系方式
 
 - 项目主页：[Calendar by WHU.sb](https://calendar.whu.sb/)
-- 问题反馈：[GitHub Issues](https://github.com/WHU-sb/WHU-sb-Calendar/issues)
+- 问题反馈：[GitHub Issues](https://github.com/ClosedWHU/WHU-Calendar/issues)
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=WHU-sb/WHU-sb-Calendar&type=Date)](https://star-history.com/#WHU-sb/WHU-sb-Calendar&Date)
-
+[![Star History Chart](https://api.star-history.com/svg?repos=ClosedWHU/WHU-Calendar&type=Date)](https://star-history.com/#ClosedWHU/WHU-Calendar&Date)
 
 ## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar?ref=badge_large)
