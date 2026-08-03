@@ -1,6 +1,7 @@
 # 武汉大学 iCalendar 校历
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/@closedwhu/calendar.svg)](https://www.npmjs.com/package/@closedwhu/calendar)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-ES%20Modules-green.svg)](https://nodejs.org/)
 [![Build Status](https://github.com/ClosedWHU/WHU-Calendar/workflows/Build%20and%20Deploy%20ICS%20Calendar/badge.svg)](https://github.com/ClosedWHU/WHU-Calendar/actions)
@@ -32,6 +33,30 @@
 ### 在线使用
 
 访问 [项目主页](https://calendar.whu.sb/) 直接预览并下载所需的校历文件。
+
+### NPM 安装使用
+
+本项目也可以作为 NPM 包引入到你的项目中：
+
+```bash
+npm install @closedwhu/calendar
+# 或者
+pnpm add @closedwhu/calendar
+```
+
+#### 代码中使用示例
+
+```typescript
+// 引入类型
+import type { CalendarData } from '@closedwhu/calendar';
+
+// 直接引入预编译的 JSON 格式历年数据
+import allData from '@closedwhu/calendar/data';
+import yearsList from '@closedwhu/calendar/years';
+
+// 若配置了相应的打包工具，也可以直接引入 ICS 原始文本
+import ics2024 from '@closedwhu/calendar/ics/2024-2025.ics';
+```
 
 ### 本地开发
 
