@@ -7,7 +7,7 @@
 [![Last commit](https://img.shields.io/github/last-commit/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/commits/main)
 [![Issues](https://img.shields.io/github/issues/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/issues)
 [![Stars](https://img.shields.io/github/stars/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/stargazers)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar?ref=badge_shield)
 
 武汉大学校历数据集合，支持导入各种日历应用，轻松管理学校日程。
 
@@ -123,4 +123,4 @@ whu-calendar/
 [![Star History Chart](https://api.star-history.com/svg?repos=ClosedWHU/WHU-Calendar&type=Date)](https://star-history.com/#ClosedWHU/WHU-Calendar&Date)
 
 ## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar?ref=badge_large)
