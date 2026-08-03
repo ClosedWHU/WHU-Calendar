@@ -1,9 +1,21 @@
 {
-  "name": "@whusb/calendar",
+  "name": "@closedwhu/calendar",
   "version": "0.1.0",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./data": "./functions/data.json",
+    "./years": "./dist/years.json",
+    "./ics/*": "./dist/*.ics"
+  },
+  "files": [
+    "dist",
+    "functions"
+  ],
   "scripts": {
-    "build": "tsx src/engine.ts",
+    "build": "tsx src/engine.ts && tsc",
     "generate": "tsx src/engine.ts"
   },
   "dependencies": {
