@@ -19,7 +19,7 @@
   },
   "pnpm": {
     "overrides": {
-      "nanoid@<4.0.0": "^3.3.17",
+      "nanoid": "^6.0.1",
       "type-fest": "^5.8.0"
     }
   }
