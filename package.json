@@ -1,7 +1,11 @@
 {
   "name": "@closedwhu/calendar",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ClosedWHU/WHU-Calendar.git"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
