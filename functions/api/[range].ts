@@ -1,6 +1,6 @@
 import { createEvents, type EventAttributes } from 'ics';
 import dataBundle from '../data.json';
-import { uidGenerateFactory } from '../../utils.js';
+import { uidGenerateFactory } from '../../src/utils.js';
 
 interface CalendarData {
   name: string
