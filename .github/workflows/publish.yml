@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 26
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
@@ -32,9 +32,6 @@ jobs:
 
       - name: Build project
         run: pnpm run build
-
-      - name: Install latest npm
-        run: npm install -g npm@latest
 
       - name: Publish to NPM
         # --provenance 标识会告诉 npm 走 OIDC 免密验证并生成防伪溯源签名
