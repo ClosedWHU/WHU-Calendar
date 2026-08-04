@@ -3,7 +3,7 @@ import { createEvents, type EventAttributes } from 'ics'
 import { writeFileSync, readFileSync, readdirSync, mkdirSync, existsSync } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import { uidGenerateFactory } from '../utils.js'
+import { uidGenerateFactory } from './utils.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -19,24 +19,7 @@ if (!existsSync(funcDir)) {
   mkdirSync(funcDir, { recursive: true })
 }
 
-interface CalendarData {
-  name: string
-  uidPrefix: string
-  events: {
-    id: string
-    title: string
-    description?: string
-    start: [number, number, number]
-    end: [number, number, number]
-    busyStatus?: 'FREE' | 'BUSY'
-  }[]
-  semesters: {
-    name: string
-    prefix: string
-    start: [number, number, number]
-    weeks: number
-  }[]
-}
+import type { CalendarData } from './types.js'
 
 // Extension methods for Date (same as utils.ts but local for ease of use in generator)
 const convertToICSDate = (date: Date): [number, number, number] => {
