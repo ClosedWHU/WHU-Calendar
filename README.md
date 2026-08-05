@@ -145,7 +145,13 @@ whu-calendar/
 
 ## Star History
 
-[![Star History Chart](https://star-history.tsinbei.com/svg?repos=ClosedWHU/WHU-Calendar&type=Date)](https://star-history.tsinbei.com/#ClosedWHU/WHU-Calendar&type=date)
+<a href="https://star-history.tsinbei.com/#ClosedWHU/WHU-Calendar&type=date&legend=top-left">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.tsinbei.com/svg?repos=ClosedWHU/WHU-Calendar&type=date&theme=dark&legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://star-history.tsinbei.com/svg?repos=ClosedWHU/WHU-Calendar&type=date&legend=top-left" />
+    <img alt="Star History Chart" src="https://star-history.tsinbei.com/svg?repos=ClosedWHU/WHU-Calendar&type=date&legend=top-left" />
+  </picture>
+</a>
 
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FWHU-sb%2FWHU-sb-Calendar?ref=badge_large)
