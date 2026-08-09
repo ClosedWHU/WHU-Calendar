@@ -16,8 +16,8 @@ importers:
         specifier: ^3.12.0
         version: 3.12.0
       tsx:
-        specifier: ^4.23.5
-        version: 4.23.5
+        specifier: ^4.23.9
+        version: 4.23.9
       typescript:
         specifier: 7.0.2
         version: 7.0.2
@@ -350,8 +350,8 @@ packages:
   toposort@2.0.2:
     resolution: {integrity: sha512-0a5EOkAUp8D4moMi2W8ZF8jcga7BgZd91O/yabJCFY8az+XSzeGyTKs0Aoo897iV1Nj6guFq8orWDS96z91oGg==}
 
-  tsx@4.23.5:
-    resolution: {integrity: sha512-rw55FUaqOoI7RvlQwLbhO4nSDApnQ4/CykPuiQ/EPvtrX3WA9Ig55jIt9VvbBJbzJuj12ueRu4PMZ2SxPVbihg==}
+  tsx@4.23.9:
+    resolution: {integrity: sha512-6q8uTORRGauQVjqMQnKUucLFoeXZAfw6zKvG35GLbdKWbLdeOtZ3H4mhyA5mxuUd2o2cRTskhj59nLLQseUvUw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -564,7 +564,7 @@ snapshots:
 
   toposort@2.0.2: {}
 
-  tsx@4.23.5:
+  tsx@4.23.9:
     dependencies:
       esbuild: 0.28.1
     optionalDependencies:
