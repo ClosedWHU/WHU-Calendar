@@ -1,10 +1,18 @@
 import 'package:flutter/foundation.dart';
 
+/// One academic year of WHU calendar data (e.g. "2024-2025").
 @immutable
 class WhuCalendarYear {
+  /// Academic year label, e.g. "2024-2025".
   final String name;
+
+  /// Prefix used for generating unique event IDs, e.g. "whu-calendar-2024".
   final String uidPrefix;
+
+  /// Calendar events (holidays, exams, registration, etc.).
   final List<WhuCalendarEvent> events;
+
+  /// Semesters within this academic year.
   final List<WhuCalendarSemester> semesters;
 
   const WhuCalendarYear({
@@ -14,6 +22,7 @@ class WhuCalendarYear {
     required this.semesters,
   });
 
+  /// Constructs a [WhuCalendarYear] from a JSON map.
   factory WhuCalendarYear.fromJson(Map<String, dynamic> json) {
     return WhuCalendarYear(
       name: json['name'] as String,
@@ -34,13 +43,25 @@ class WhuCalendarYear {
   }
 }
 
+/// A single calendar event (holiday, exam week, registration, etc.).
 @immutable
 class WhuCalendarEvent {
+  /// Stable identifier, e.g. "national-day-holiday".
   final String id;
+
+  /// Human-readable title in Chinese.
   final String title;
+
+  /// Optional description with additional details.
   final String? description;
+
+  /// Start date of the event.
   final DateTime start;
+
+  /// End date of the event (exclusive).
   final DateTime end;
+
+  /// "FREE" or "BUSY".
   final String? busyStatus;
 
   const WhuCalendarEvent({
@@ -52,6 +73,7 @@ class WhuCalendarEvent {
     this.busyStatus,
   });
 
+  /// Constructs a [WhuCalendarEvent] from a JSON map.
   factory WhuCalendarEvent.fromJson(Map<String, dynamic> json) {
     final startArray = json['start'] as List<dynamic>;
     final endArray = json['end'] as List<dynamic>;
@@ -70,11 +92,19 @@ class WhuCalendarEvent {
   }
 }
 
+/// A semester within an academic year (e.g. "2024-2025第一学期").
 @immutable
 class WhuCalendarSemester {
+  /// Full name, e.g. "2024-2025第一学期".
   final String name;
+
+  /// Term prefix, e.g. "term-1", "term-2", "term-3".
   final String prefix;
+
+  /// Start date of the semester (always a Sunday).
   final DateTime start;
+
+  /// Number of teaching weeks.
   final int weeks;
 
   const WhuCalendarSemester({
@@ -84,6 +114,7 @@ class WhuCalendarSemester {
     required this.weeks,
   });
 
+  /// Constructs a [WhuCalendarSemester] from a JSON map.
   factory WhuCalendarSemester.fromJson(Map<String, dynamic> json) {
     final startArray = json['start'] as List<dynamic>;
     return WhuCalendarSemester(
@@ -98,6 +129,7 @@ class WhuCalendarSemester {
     );
   }
 
+  /// Extracts the term number from [prefix], e.g. "term-1" → 1.
   int get termNumber {
     final match = RegExp(r'term-(\d+)').firstMatch(prefix);
     if (match != null) {

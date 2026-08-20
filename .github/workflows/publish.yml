@@ -61,7 +61,7 @@ jobs:
       - name: Sync data and docs into package
         run: |
           bash scripts/sync-data.sh
-          cp README.md LICENSE dart/
+          cp README.md LICENSE CHANGELOG.md dart/
           sed -i '/^assets\/data/d' dart/.gitignore
 
       - name: Publish to pub.dev

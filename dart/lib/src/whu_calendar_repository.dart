@@ -7,12 +7,20 @@ import 'whu_calendar_data.dart';
 
 const _assetPrefix = 'packages/whu_calendar/assets/data/';
 
+/// Loads and queries WHU academic calendar data from bundled JSON assets.
+///
+/// Pass [rootBundle] in a Flutter app:
+/// ```dart
+/// final repo = WhuCalendarRepository(rootBundle);
+/// ```
 class WhuCalendarRepository {
   WhuCalendarRepository(this._bundle);
 
   final AssetBundle _bundle;
   List<WhuCalendarYear>? _cachedYears;
 
+  /// Loads all academic years from the asset bundle, sorted by name descending.
+  /// Results are cached after the first call.
   Future<List<WhuCalendarYear>> loadAllYears() async {
     if (_cachedYears != null) return _cachedYears!;
 
@@ -44,6 +52,8 @@ class WhuCalendarRepository {
     return years;
   }
 
+  /// Returns the semester containing [date], or `null` if the date falls
+  /// outside all semesters (e.g. summer/winter break).
   Future<WhuCalendarSemester?> getSemesterForDate(DateTime date) async {
     final years = await loadAllYears();
 
@@ -61,6 +71,8 @@ class WhuCalendarRepository {
     return null;
   }
 
+  /// Looks up a semester by academic [year] (e.g. 2024) and [semester]
+  /// term number (1, 2, or 3). Returns `null` if not found.
   Future<WhuCalendarSemester?> getSemester({
     required int year,
     required int semester,
