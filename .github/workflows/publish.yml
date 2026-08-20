@@ -75,5 +75,6 @@ jobs:
         run: |
           export PUB_ID_TOKEN_REQUEST_URL="$ACTIONS_ID_TOKEN_REQUEST_URL"
           export PUB_ID_TOKEN_REQUEST_TOKEN="$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
+          unset PUB_HOSTED_URL
           flutter pub publish --force
         working-directory: dart
