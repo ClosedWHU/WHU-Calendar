@@ -1,4 +1,4 @@
-name: Publish to NPM
+name: Publish
 
 on:
   push:
@@ -7,22 +7,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  npm:
+    name: npm
     runs-on: [self-hosted, Linux, X64]
     permissions:
       contents: read
-      id-token: write # 此权限是生成 OIDC 令牌及进行 npm provenance 认证所必须的
+      id-token: write
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v7  # nosemgrep: github-actions-mutable-action-tag
+      - uses: actions/checkout@v7  # nosemgrep
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v6  # nosemgrep: github-actions-mutable-action-tag
+        uses: pnpm/action-setup@v6  # nosemgrep
         with:
           version: 10
 
       - name: Setup Node.js
-        uses: actions/setup-node@v7  # nosemgrep: github-actions-mutable-action-tag
+        uses: actions/setup-node@v7  # nosemgrep
         with:
           node-version: 26
           registry-url: 'https://registry.npmjs.org'
@@ -34,7 +34,27 @@ jobs:
         run: pnpm run build
 
       - name: Publish to NPM
-        # --provenance 标识会告诉 npm 走 OIDC 免密验证并生成防伪溯源签名
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ""
+
+  pub-dev:
+    name: pub.dev
+    runs-on: [self-hosted, Linux, X64]
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7  # nosemgrep
+
+      - name: Setup Dart with OIDC
+        uses: dart-lang/setup-dart@v1  # nosemgrep
+        with:
+          oidc: true
+
+      - name: Copy root README and LICENSE into package
+        run: cp README.md LICENSE dart/
+
+      - name: Publish to pub.dev
+        run: dart pub publish --force
+        working-directory: dart

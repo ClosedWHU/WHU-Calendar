@@ -1,7 +1,8 @@
 name: whu_calendar
 description: WHU academic calendar data and Flutter utilities — multi-language (TS + Dart) support.
-version: 0.1.0
-publish_to: none
+version: 0.3.0
+repository: https://github.com/ClosedWHU/WHU-Calendar
+issue_tracker: https://github.com/ClosedWHU/WHU-Calendar/issues
 
 environment:
   sdk: ">=3.9.0 <4.0.0"
