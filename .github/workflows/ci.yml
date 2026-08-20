@@ -30,12 +30,35 @@ jobs:
     name: Semgrep
     runs-on: [self-hosted, Linux, X64]
     steps:
-      - uses: actions/checkout@v7  # nosemgrep: github-actions-mutable-action-tag
+      - uses: actions/checkout@v7  # nosemgrep
       - name: Semgrep scan
         run: |
           HOST_WORK=$(docker inspect "$(cat /etc/hostname)" | jq -r '.[0].Mounts[] | select(.Destination == "/_work") | .Source')
           HOST_PWD="${HOST_WORK}${PWD#/_work}"
           docker run --rm -v "$HOST_PWD:/src" returntocorp/semgrep semgrep scan --config=p/default --metrics=off --error
+
+  contributors:
+    name: Contributors
+    runs-on: [self-hosted, Linux, X64]
+    if: github.event_name == 'push'
+    permissions:
+      contents: write
+      pages: none
+      id-token: none
+    steps:
+      - name: Generate Contributors Images
+        uses: jaywcjlove/github-action-contributors@main  # nosemgrep
+        id: contributors
+        with:
+          filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
+          avatarSize: 42
+
+      - name: Modify htmlTable README.md
+        uses: jaywcjlove/github-action-modify-file-content@main  # nosemgrep
+        with:
+          message: update contributors[no ci]
+          path: README.md
+          body: "${{steps.contributors.outputs.htmlList}}"
 
   build:
     name: Build
@@ -44,15 +67,15 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Checkout
-        uses: actions/checkout@v7  # nosemgrep: github-actions-mutable-action-tag
+        uses: actions/checkout@v7  # nosemgrep
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v6  # nosemgrep: github-actions-mutable-action-tag
+        uses: pnpm/action-setup@v6  # nosemgrep
         with:
           version: 10
 
       - name: Setup Node.js
-        uses: actions/setup-node@v7  # nosemgrep: github-actions-mutable-action-tag
+        uses: actions/setup-node@v7  # nosemgrep
         with:
           node-version: '18'
           cache: 'pnpm'
@@ -72,10 +95,10 @@ jobs:
           cp -r assets dist/
 
       - name: Setup Pages
-        uses: actions/configure-pages@v6  # nosemgrep: github-actions-mutable-action-tag
+        uses: actions/configure-pages@v6  # nosemgrep
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5  # nosemgrep: github-actions-mutable-action-tag
+        uses: actions/upload-pages-artifact@v5  # nosemgrep
         with:
           path: './dist'
 
@@ -90,4 +113,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5  # nosemgrep: github-actions-mutable-action-tag
+        uses: actions/deploy-pages@v5  # nosemgrep
