@@ -27,4 +27,4 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Semgrep scan
-        run: docker run --rm -v "$PWD:/src" returntocorp/semgrep semgrep scan --config=auto --metrics=off --error
+        run: docker run --rm -v "$PWD:/src" returntocorp/semgrep semgrep scan --config=p/default --metrics=off --error
