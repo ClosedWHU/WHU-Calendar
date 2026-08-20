@@ -68,7 +68,7 @@ jobs:
       - name: Verify data sync
         run: |
           dart run tool/sync_data.dart
-          if ! git diff --exit-code dart/assets/data/; then
+          if ! git diff --exit-code -- assets/data/; then
             echo "::error::dart/assets/data/ is out of sync with data/. Run 'dart run tool/sync_data.dart' in dart/ and commit."
             exit 1
           fi
