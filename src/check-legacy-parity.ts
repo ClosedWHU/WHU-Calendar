@@ -16,11 +16,11 @@ let matchCount = 0
 let genuineMismatches = 0
 
 jsonFiles.forEach(jsonFile => {
-  const jsonPath = join(dataDir, jsonFile)  // nosemgrep: javascript.lang.security.audit.path-traversal.path-join-resolve-traversal
+  const jsonPath = join(dataDir, jsonFile)  // nosemgrep
   const jsonContent = JSON.parse(readFileSync(jsonPath, 'utf-8'))
   const yearRange = jsonContent.name
   const legacyFile = `calendar_${yearRange.split('-')[0]}.ts`
-  const legacyPath = join(legacyDir, legacyFile)  // nosemgrep: javascript.lang.security.audit.path-traversal.path-join-resolve-traversal
+  const legacyPath = join(legacyDir, legacyFile)  // nosemgrep
 
   console.log(`📂 Auditing ${jsonFile} against ${legacyFile}:`)
 
