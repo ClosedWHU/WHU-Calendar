@@ -4,7 +4,7 @@
 [![npm version](https://img.shields.io/npm/v/@closedwhu/calendar.svg)](https://www.npmjs.com/package/@closedwhu/calendar)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-ES%20Modules-green.svg)](https://nodejs.org/)
-[![Build Status](https://github.com/ClosedWHU/WHU-Calendar/workflows/Deploy%20Calendar/badge.svg)](https://github.com/ClosedWHU/WHU-Calendar/actions)
+[![Build Status](https://github.com/ClosedWHU/WHU-Calendar/workflows/CI/badge.svg)](https://github.com/ClosedWHU/WHU-Calendar/actions)
 [![Last commit](https://img.shields.io/github/last-commit/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/commits/main)
 [![Issues](https://img.shields.io/github/issues/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/issues)
 [![Stars](https://img.shields.io/github/stars/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/stargazers)

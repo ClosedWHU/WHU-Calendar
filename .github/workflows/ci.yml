@@ -1,17 +1,16 @@
-name: Deploy Calendar
+name: CI
 
 on:
   push:
-    branches: ['main', 'master']
-    paths:
-      - 'src/**'
-      - 'data/**'
-      - 'index.html'
-      - 'assets/**'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - 'tsconfig.json'
-      - '.github/workflows/deploy.yml'
+    branches: [main, master]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+  pull_request:
+    branches: [main, master]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
   workflow_dispatch:
 
 permissions:
@@ -20,12 +19,29 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
-  build:
+  semgrep:
+    name: Semgrep
     runs-on: [self-hosted, Linux, X64]
+    steps:
+      - uses: actions/checkout@v7  # nosemgrep: github-actions-mutable-action-tag
+      - name: Semgrep scan
+        run: |
+          HOST_WORK=$(docker inspect "$(cat /etc/hostname)" | jq -r '.[0].Mounts[] | select(.Destination == "/_work") | .Source')
+          HOST_PWD="${HOST_WORK}${PWD#/_work}"
+          docker run --rm -v "$HOST_PWD:/src" returntocorp/semgrep semgrep scan --config=p/default --metrics=off --error
+
+  build:
+    name: Build
+    runs-on: [self-hosted, Linux, X64]
+    needs: semgrep
+    if: github.event_name == 'push'
     steps:
       - name: Checkout
         uses: actions/checkout@v7  # nosemgrep: github-actions-mutable-action-tag
@@ -64,11 +80,13 @@ jobs:
           path: './dist'
 
   deploy:
+    name: Deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: [self-hosted, Linux, X64]
     needs: build
+    if: github.event_name == 'push'
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
