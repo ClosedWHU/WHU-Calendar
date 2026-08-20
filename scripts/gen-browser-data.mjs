@@ -8,6 +8,7 @@ const dataDir = join(projectRoot, 'data')
 const outFile = join(projectRoot, 'src', '_browser-data.ts')
 
 const files = readdirSync(dataDir).filter(f => f.endsWith('.json')).sort()
+// nosemgrep: javascript.lang.security.audit.path-traversal.path-join-resolve-traversal.path-join-resolve-traversal — f comes from readdirSync, not user input
 const items = files.map(f => JSON.parse(readFileSync(join(dataDir, f), 'utf-8')))
   .sort((a, b) => b.name.localeCompare(a.name))
 
