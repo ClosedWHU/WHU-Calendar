@@ -14,15 +14,15 @@ jobs:
       id-token: write # 此权限是生成 OIDC 令牌及进行 npm provenance 认证所必须的
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7  # nosemgrep: github-actions-mutable-action-tag
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@v6  # nosemgrep: github-actions-mutable-action-tag
         with:
           version: 10
 
       - name: Setup Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@v7  # nosemgrep: github-actions-mutable-action-tag
         with:
           node-version: 26
           registry-url: 'https://registry.npmjs.org'

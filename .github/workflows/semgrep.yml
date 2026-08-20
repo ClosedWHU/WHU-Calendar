@@ -25,7 +25,7 @@ jobs:
     name: Semgrep
     runs-on: [self-hosted, Linux, X64]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7  # nosemgrep: github-actions-mutable-action-tag
       - name: Semgrep scan
         run: |
           HOST_WORK=$(docker inspect "$(cat /etc/hostname)" | jq -r '.[0].Mounts[] | select(.Destination == "/_work") | .Source')

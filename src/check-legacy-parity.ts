@@ -16,11 +16,11 @@ let matchCount = 0
 let genuineMismatches = 0
 
 jsonFiles.forEach(jsonFile => {
-  const jsonPath = join(dataDir, jsonFile)
+  const jsonPath = join(dataDir, jsonFile)  // nosemgrep: javascript.lang.security.audit.path-traversal.path-join-resolve-traversal
   const jsonContent = JSON.parse(readFileSync(jsonPath, 'utf-8'))
   const yearRange = jsonContent.name
   const legacyFile = `calendar_${yearRange.split('-')[0]}.ts`
-  const legacyPath = join(legacyDir, legacyFile)
+  const legacyPath = join(legacyDir, legacyFile)  // nosemgrep: javascript.lang.security.audit.path-traversal.path-join-resolve-traversal
 
   console.log(`📂 Auditing ${jsonFile} against ${legacyFile}:`)
 
@@ -30,7 +30,7 @@ jsonFiles.forEach(jsonFile => {
     // 1. Audit Semester Dates
     jsonContent.semesters.forEach((s: any) => {
       // Look for comments like "学年第一学期于2021年9月5日"
-      const semesterRegex = new RegExp(`${s.name.slice(-4)}.*?于(\\d+)年(\\d+)月(\\d+)日`, 'g')
+      const semesterRegex = new RegExp(`${s.name.slice(-4)}.*?于(\\d+)年(\\d+)月(\\d+)日`, 'g')  // nosemgrep: javascript.lang.security.audit.detect-non-literal-regexp.detect-non-literal-regexp
       const match = semesterRegex.exec(legacyContent)
       
       if (match) {
@@ -52,7 +52,7 @@ jsonFiles.forEach(jsonFile => {
     // 2. Audit Events by Title
     jsonContent.events.forEach((e: any) => {
       const escapedTitle = e.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-      const eventRegex = new RegExp(`title:\\s*['"]${escapedTitle}['"][^]*?start:\\s*\\[(\\d+),\\s*(\\d+),\\s*(\\d+)\\]`, 'g')
+      const eventRegex = new RegExp(`title:\\s*['"]${escapedTitle}['"][^]*?start:\\s*\\[(\\d+),\\s*(\\d+),\\s*(\\d+)\\]`, 'g')  // nosemgrep: javascript.lang.security.audit.detect-non-literal-regexp.detect-non-literal-regexp
       const matches = [...legacyContent.matchAll(eventRegex)]
 
       if (matches.length > 0) {

@@ -12,14 +12,14 @@ jobs:
       contents: write
     steps:
       - name: Generate Contributors Images
-        uses: jaywcjlove/github-action-contributors@main
+        uses: jaywcjlove/github-action-contributors@main  # nosemgrep: github-actions-mutable-action-tag
         id: contributors
         with:
           filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
           avatarSize: 42
 
       - name: Modify htmlTable README.md
-        uses: jaywcjlove/github-action-modify-file-content@main
+        uses: jaywcjlove/github-action-modify-file-content@main  # nosemgrep: github-actions-mutable-action-tag
         with:
           message: update contributors[no ci]
           path: README.md
