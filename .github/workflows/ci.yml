@@ -40,11 +40,30 @@ jobs:
   dart:
     name: Dart package
     runs-on: [self-hosted, Linux, X64]
+    env:
+      FLUTTER_VERSION: "3.47.0"
+      FLUTTER_STORAGE_BASE_URL: https://storage.flutter-io.cn
+      PUB_HOSTED_URL: https://pub.flutter-io.cn
     steps:
       - uses: actions/checkout@v7  # nosemgrep
-      - uses: dart-lang/setup-dart@v1  # nosemgrep
+      - name: Setup Flutter from toolcache
+        run: |
+          TOOLCACHE_DIR="/opt/hostedtoolcache/flutter/stable-${FLUTTER_VERSION}-x64"
+          FLUTTER_DIR="${TOOLCACHE_DIR}/flutter"
+          if [ ! -x "$FLUTTER_DIR/bin/flutter" ]; then
+            echo "Flutter ${FLUTTER_VERSION} not in toolcache, downloading..."
+            mkdir -p "$TOOLCACHE_DIR"
+            curl -fsSL "${FLUTTER_STORAGE_BASE_URL}/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.x64.zip" -o /tmp/flutter.zip
+            unzip -q /tmp/flutter.zip -d "$TOOLCACHE_DIR"
+            mv "${TOOLCACHE_DIR}/flutter" "$FLUTTER_DIR"
+            rm -f /tmp/flutter.zip
+          else
+            echo "Flutter ${FLUTTER_VERSION} found in toolcache"
+          fi
+          echo "$FLUTTER_DIR/bin" >> "$GITHUB_PATH"
+          echo "FLUTTER_ROOT=$FLUTTER_DIR" >> "$GITHUB_ENV"
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
         working-directory: dart
       - name: Verify data sync
         run: |
@@ -55,7 +74,7 @@ jobs:
           fi
         working-directory: dart
       - name: Analyze
-        run: dart analyze
+        run: flutter analyze
         working-directory: dart
 
   contributors:
