@@ -51,6 +51,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7  # nosemgrep
 
+      - name: Setup Dart with OIDC
+        uses: dart-lang/setup-dart@v1  # nosemgrep
+        with:
+          oidc: true
+
       - name: Setup Flutter from toolcache
         run: |
           TOOLCACHE_DIR="/opt/hostedtoolcache/flutter/stable-${FLUTTER_VERSION}-x64"
@@ -72,9 +77,5 @@ jobs:
         run: cp README.md LICENSE dart/
 
       - name: Publish to pub.dev
-        run: |
-          export PUB_ID_TOKEN_REQUEST_URL="$ACTIONS_ID_TOKEN_REQUEST_URL"
-          export PUB_ID_TOKEN_REQUEST_TOKEN="$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
-          unset PUB_HOSTED_URL
-          flutter pub publish --force
+        run: flutter pub publish --force
         working-directory: dart
