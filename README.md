@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://img.shields.io/npm/v/@closedwhu/calendar.svg)](https://www.npmjs.com/package/@closedwhu/calendar)
+[![pub.dev](https://img.shields.io/pub/v/whu_calendar.svg)](https://pub.dev/packages/whu_calendar)
+[![Go](https://img.shields.io/badge/Go-reference-blue.svg)](https://github.com/ClosedWHU/WHU-Calendar)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-ES%20Modules-green.svg)](https://nodejs.org/)
 [![Build Status](https://github.com/ClosedWHU/WHU-Calendar/workflows/CI/badge.svg)](https://github.com/ClosedWHU/WHU-Calendar/actions)
@@ -14,9 +16,9 @@
 
 ## 项目简介
 
-本项目提供武汉大学官方校历的 iCalendar 格式数据，目前包含从 2021 年到 2026 年（持续更新中）的完整校历信息。
+本项目提供武汉大学官方校历的 iCalendar 格式数据，目前包含从 2012 年到 2027 年（持续更新中）的完整校历信息。
 
-本项目使用数据驱动架构，所有校历数据均存储在 `data/*.json` 中。
+本项目使用数据驱动架构，所有校历数据均存储在 `data/*.json` 中，通过 TypeScript、Dart、Go 三种语言原生导入，仓库内仅保留一份数据。
 
 > **注意**：本项目仅提供校历数据，不保证数据的绝对实时性。请以武汉大学官方发布的[最新校历](https://uc.whu.edu.cn/xl.htm)为准。
 
@@ -24,7 +26,7 @@
 
 - **官方数据源**：基于武汉大学本科生院官方校历数据。
 - **Sunday-Start 规范**：所有教学周严格从周日开始，到周六结束，完美契合武大作息。
-- **现代化架构**：采用 JSON 结构化存储，支持 1-indexed 月份表示，告别 JS Date 的 0 索引歧义。
+- **多语言支持**：TypeScript/npm、Dart/Flutter、Go 三种语言原生导入，数据零重复。
 - **自动更新**：支持在线订阅，校历更新时自动同步。
 - **网页预览**：通过 [calendar.whu.sb](https://calendar.whu.sb) 动态加载并提供下载。
 
@@ -34,28 +36,63 @@
 
 访问 [项目主页](https://calendar.whu.sb/) 直接预览并下载所需的校历文件。
 
-### NPM 安装使用
-
-本项目也可以作为 NPM 包引入到你的项目中：
+### TypeScript / npm
 
 ```bash
 npm install @closedwhu/calendar
-# 或者
+# 或
 pnpm add @closedwhu/calendar
 ```
 
-#### 代码中使用示例
-
 ```typescript
-// 引入类型
 import type { CalendarData } from '@closedwhu/calendar';
 
-// 直接引入预编译的 JSON 格式历年数据
 import allData from '@closedwhu/calendar/data';
 import yearsList from '@closedwhu/calendar/years';
-
-// 若配置了相应的打包工具，也可以直接引入 ICS 原始文本
 import ics2024 from '@closedwhu/calendar/ics/2024-2025.ics';
+```
+
+### ESM / CDN（jsDelivr）
+
+无需安装，直接在浏览器中导入。数据内联在 bundle 中，无运行时网络请求：
+
+```html
+<script type="module">
+  import { loadAllYears, getSemester, getSemesterForDate } from
+    'https://cdn.jsdelivr.net/npm/@closedwhu/calendar@latest/dist/browser.js';
+
+  console.log(loadAllYears().length, 'years');
+  console.log(getSemester(2024, 1)?.name);          // "2024-2025第一学期"
+  console.log(getSemesterForDate(new Date())?.name);  // 当前学期
+</script>
+```
+
+### Dart / Flutter (pub.dev)
+
+```yaml
+dependencies:
+  whu_calendar: ^0.3.2
+```
+
+```dart
+import 'package:whu_calendar/whu_calendar.dart';
+
+final repo = WhuCalendarRepository(rootBundle);
+final years = await repo.loadAllYears();
+final sem = await repo.getSemester(year: 2024, semester: 1);
+```
+
+### Go
+
+```bash
+go get github.com/ClosedWHU/WHU-Calendar
+```
+
+```go
+import "github.com/ClosedWHU/WHU-Calendar"
+
+years, _ := whucalendar.LoadAllYears()
+sem, _ := whucalendar.GetSemester(2024, 1)
 ```
 
 ### 本地开发
@@ -83,15 +120,26 @@ pnpm run build
 
 ```
 whu-calendar/
-├── data/                   # 结构化 JSON 校历数据
-├── src/                    # 引擎源文件
-│   ├── engine.ts           # 统一构建引擎
+├── data/                   # 结构化 JSON 校历数据（唯一数据源）
+├── src/                    # TypeScript 引擎源文件
+│   ├── types.ts            # CalendarData / CalendarEvent / Semester 类型定义
+│   ├── browser.ts          # 浏览器 ESM 入口（查询 API + 数据内联）
+│   ├── engine.ts           # 统一构建引擎（ICS 生成）
 │   ├── check-alignment.ts  # 自动对齐校验工具
 │   └── check-legacy-parity.ts # 溯源审计工具
-├── legacy/                 # （弃用） 年度 TS 数据源
+├── dart/                   # Dart / Flutter 包
+│   ├── pubspec.yaml
+│   └── lib/
+├── whucalendar.go          # Go 包（//go:embed data/*.json）
+├── whucalendar_test.go
+├── scripts/                # 构建脚本
+│   ├── sync-data.sh        # 同步 data/ 到 dart/assets/data/
+│   └── gen-browser-data.mjs # 生成 ESM bundle 数据
+├── go.mod                  # module github.com/ClosedWHU/WHU-Calendar
+├── functions/              # Cloudflare Worker API
 ├── dist/                   # 构建输出目录
 │   ├── *.ics               # 生成的 ICS 文件
-│   ├── all.ics             # 完整合集
+│   ├── browser.js          # 浏览器 ESM bundle（数据内联）
 │   └── years.json          # 供前端使用的年份元数据
 ├── index.html              # 项目主页
 └── README.md

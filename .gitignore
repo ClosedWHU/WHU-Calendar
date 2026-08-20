@@ -1,5 +1,6 @@
 node_modules/
 dist/
+src/_browser-data.ts
 
 *.ics
 .DS_Store

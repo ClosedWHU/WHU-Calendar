@@ -10,6 +10,7 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
+    "./browser": "./dist/browser.js",
     "./data": "./functions/data.json",
     "./years": "./dist/years.json",
     "./ics/*": "./dist/*.ics"
@@ -19,7 +20,7 @@
     "functions"
   ],
   "scripts": {
-    "build": "tsx src/engine.ts && tsc",
+    "build": "node scripts/gen-browser-data.mjs && tsx src/engine.ts && tsc && esbuild src/browser.ts --bundle --format=esm --outfile=dist/browser.js",
     "generate": "tsx src/engine.ts"
   },
   "dependencies": {
