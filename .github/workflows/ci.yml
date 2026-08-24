@@ -42,7 +42,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64]
     steps:
       - uses: actions/checkout@v7  # nosemgrep
-      - uses: actions/setup-go@v5  # nosemgrep
+      - uses: actions/setup-go@v7  # nosemgrep
         with:
           go-version: '1.22'
       - name: Vet
