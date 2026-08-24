@@ -130,6 +130,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Generate browser data
+        run: node scripts/gen-browser-data.mjs
+
       - name: Compile TypeScript
         run: npx tsc
 
