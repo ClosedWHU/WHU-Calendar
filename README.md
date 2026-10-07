@@ -12,23 +12,23 @@
 [![Stars](https://img.shields.io/github/stars/ClosedWHU/WHU-Calendar.svg)](https://github.com/ClosedWHU/WHU-Calendar/stargazers)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FClosedWHU%2FWHU-Calendar?ref=badge_shield)
 
-武汉大学校历数据集合，支持导入各种日历应用，轻松管理学校日程。
+武汉大学校历数据集合，支持导入各种日历应用，管理学校日程。
 
 ## 项目简介
 
-本项目提供武汉大学官方校历的 iCalendar 格式数据，目前包含从 2012 年到 2027 年（持续更新中）的完整校历信息。
+武汉大学官方校历的 iCalendar 格式数据，包含从 2012 年到 2027 年（持续更新中）的完整校历信息。
 
-本项目使用数据驱动架构，所有校历数据均存储在 `data/*.json` 中，通过 TypeScript、Dart、Go 三种语言原生导入，仓库内仅保留一份数据。
+数据驱动架构：所有校历数据均存储在 `data/*.json` 中，通过 TypeScript、Dart、Go 三种语言原生导入，仓库内仅保留一份数据。
 
 > **注意**：本项目仅提供校历数据，不保证数据的绝对实时性。请以武汉大学官方发布的[最新校历](https://uc.whu.edu.cn/xl.htm)为准。
 
 ### 主要特性
 
-- **官方数据源**：基于武汉大学本科生院官方校历数据。
-- **Sunday-Start 规范**：所有教学周严格从周日开始，到周六结束，完美契合武大作息。
-- **多语言支持**：TypeScript/npm、Dart/Flutter、Go 三种语言原生导入，数据零重复。
-- **自动更新**：支持在线订阅，校历更新时自动同步。
-- **网页预览**：通过 [calendar.whu.sb](https://calendar.whu.sb) 动态加载并提供下载。
+- 官方数据源：基于武汉大学本科生院官方校历数据。
+- Sunday-Start 规范：所有教学周严格从周日开始，到周六结束，与武大作息一致。
+- 多语言支持：TypeScript/npm、Dart/Flutter、Go 三种语言原生导入，数据零重复。
+- 自动更新：支持在线订阅，校历更新时自动同步。
+- 网页预览：通过 [calendar.whu.sb](https://calendar.whu.sb) 动态加载并提供下载。
 
 ## 快速开始
 
@@ -97,20 +97,20 @@ sem, _ := whucalendar.GetSemester(2024, 1)
 
 ### 本地开发
 
-1. **克隆项目**
+1. 克隆项目
 
 ```bash
 git clone https://github.com/ClosedWHU/WHU-Calendar.git
 cd WHU-Calendar
 ```
 
-2. **安装依赖**
+2. 安装依赖
 
 ```bash
 pnpm install
 ```
 
-3. **构建项目**
+3. 构建项目
 
 ```bash
 pnpm run build
@@ -153,30 +153,29 @@ whu-calendar/
 
 | 特性         | Legacy (TS)                | Modern (JSON)              |
 | :----------- | :------------------------- | :------------------------- |
-| **存储方式** | 硬编码脚本 (`legacy/*.ts`) | 结构化数据 (`data/*.json`) |
-| **月份索引** | 0-indexed (0=Jan)          | **1-indexed (1=Jan)**      |
-| **周起始日** | 视脚本而定                 | **强制 Sunday (周日)**     |
-| **校验机制** | 无                         | 自动化脚本审计             |
+| 存储方式 | 硬编码脚本 (`legacy/*.ts`) | 结构化数据 (`data/*.json`) |
+| 月份索引 | 0-indexed (0=Jan)          | 1-indexed (1=Jan)      |
+| 周起始日 | 视脚本而定                 | 强制 Sunday（周日）     |
+| 校验机制 | 无                         | 自动化脚本审计             |
 
 ## 开发指南
 
 ### 添加新年度校历
 
 1. 在 `data/` 目录下创建新的 `YYYY-YYYY.json` 文件（参考现有模板）。
-2. **日期规范**：
+2. 日期规范：
    - 月份使用真实数字（如 9 代表 9 月）。
-   - 每个学期的 `start` 日期必须固定为**该周的星期天**。
+   - 每个学期的 `start` 日期必须固定为该周的星期天。
 3. 运行 `pnpm run build` 重新生成资源。
 4. 运行 `npx tsx src/check-alignment.ts` 进行审计。
 
 ## 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+本项目采用 MIT 许可证——查看 [LICENSE](LICENSE) 文件了解详情。
 
 ## 致谢
 
 - 感谢武汉大学本科生院提供官方校历数据。
-- 感谢所有贡献者的支持和建议。
 
 <!--GAMFC--><a href="https://github.com/HsukqiLee" title="Hsukqi Lee"><img src="https://avatars.githubusercontent.com/u/79034142?v=4" width="42;" alt="Hsukqi Lee"/></a>
 <a href="https://github.com/ExerciseBook" title="Eric_Lian"><img src="https://avatars.githubusercontent.com/u/6327311?v=4" width="42;" alt="Eric_Lian"/></a>
