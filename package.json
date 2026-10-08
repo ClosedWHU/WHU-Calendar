@@ -25,19 +25,19 @@
   },
   "dependencies": {
     "ics": "^3.12.0",
-    "tsx": "^4.23.12",
+    "tsx": "^4.23.13",
     "typescript": "7.0.2"
   },
   "devDependencies": {
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.4.1",
     "esbuild": "^0.28.2",
     "nanoid": "^6.0.1",
-    "type-fest": "^5.8.0"
+    "type-fest": "^5.9.0"
   },
   "pnpm": {
     "overrides": {
       "nanoid": "^6.0.1",
-      "type-fest": "^5.8.0"
+      "type-fest": "^5.9.0"
     }
   }
 }
