@@ -24,12 +24,12 @@
     "generate": "tsx src/engine.ts"
   },
   "dependencies": {
-    "ics": "^3.12.0",
-    "tsx": "^4.23.12",
+    "ics": "^3.12.1",
+    "tsx": "^4.23.15",
     "typescript": "7.0.2"
   },
   "devDependencies": {
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.6.4",
     "esbuild": "^0.28.2",
     "nanoid": "^6.0.1",
     "type-fest": "^5.8.0"
